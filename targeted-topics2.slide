@@ -1,6 +1,6 @@
 Golang Targeted Topics Part 2: Control/Data Structures
 "Go is expressive, concise, clean, and efficient"
-19 Mar 2019
+07 Aug 2019
 
 Dave Wade-Stein
 DevelopIntelligence
@@ -131,49 +131,6 @@ implement a square root function using Newton's method:
 
 .play -edit src/continuelabel.go
 
-* defer
-`defer` pushes a function call onto a list, and the saved calls are executed after the surrounding function returns
-
-commonly used to simplify functions with cleanup actions
-
-rules
-
-- deferred function's arguments are evaluated when the defer statement is evaluated
-
-- deferred function calls are executed in Last In First Out order
-
-.play -edit src/defer.go /START OMIT/,/END OMIT/
-
-* Exercise: defer
-
-- write a program which repeatedly asks to enter a word
-- your program should quit when the user enters "quit"
-- if the length of the word is even, your program should print the word out
-- if the length of the word is odd, your program should defer the printing of the word
-
-* panic
-
-- built-in function that stops the ordinary flow of control and begins "panicking"
-- when function F calls `panic()`, execution of F stops, any deferred functions in F are executed normally, and then F returns to its caller
-- to the caller, F then behaves like a call to `panic()`
-- process continues up the stack until all functions have returned, at which point the program crashes
-- panics can also be caused by runtime errors, such as out-of-bounds array accesses
-- let's see an example of `defer` plus `panic()`...
-
-* panic (cont'd)
-
-.play -edit src/deferpluspanic.go /START OMIT/,/END OMIT/
-
-* recover 
-- built-in function that regains control of a panicking goroutine
-- only useful inside deferred functions
-- during normal execution, a call to `recover()` will return nil and have no other effect
-- if current goroutine is panicking, a call to recover() will capture the value passed to `panic()` and resume normal execution
-- let's add `recover()` to previous example...
-
-* recover (cont'd)
-.play -edit src/deferpluspanicplusrecover.go /START OMIT/,/END OMIT/
-
 * Data Structures
 
 * Arrays
@@ -278,10 +235,4 @@ rules
 - print Arabic equivalent
 - try it with MCLX = 1000 + 100 + 50 + 10 = 1160
 - EXTRA: if you have time, deal with the case where a smaller number precedes a larger number, e.g., XC = 100 - 10 = 90, or MCM = 1000 + (1000-100) = 1900
-
-* sort Package
-- methods are specific to builtin type
-- sorting occurs in place
-
-.play -edit src/sort.go /START OMIT/,/END OMIT/
 

@@ -1,6 +1,6 @@
 Golang Targeted Topics Part 3: Files + Concurrency + Documentation
 "Go is expressive, concise, clean, and efficient"
-20 Mar 2019
+08 Aug 2019
 
 Dave Wade-Stein
 DevelopIntelligence
@@ -15,18 +15,6 @@ http://www.developintelligence.com
 
 .play -edit src/read.go /START OMIT/,/END OMIT/
 
-* Writing Files
-
-.play -edit src/write.go /START OMIT/,/END OMIT/
-
-* More Reading Files
-
-.code src/read2.go /START OMIT/,/END OMIT/
-
-* More Reading Files (cont'd)
-
-.play -edit src/read2.go /START2 OMIT/,/END2 OMIT/
-
 * Reading a Text File Line by Line
 - easiest to use a `Scanner` in the `bufio` package
 - substitute `os.Stdin` to read from standard input
@@ -39,7 +27,6 @@ http://www.developintelligence.com
 - read the file a line at a time, and split the line into words (hint: look at `strings` package)
 - print out words and counts (don't worry about sorting, it's tricky)
 - EXTRA: treat *The* and *the* as the same word when counting (hint: look at `strings` package)
-- EXTRA: remove punctuation, so *Hamlet,* == *Hamlet* (hint: look at Regexp package)
 .link http://bit.ly/BillShak Test on Shakespeare's Hamlet
 
 * Concurrency
@@ -53,13 +40,6 @@ http://www.developintelligence.com
 - parallelism is about doing many things at once (i.e., it's about execution)
 - consider an OS which manages a number of I/O devices: mouse, keyboard, video, etc.
 - it's concurrent, but if only one CPU, clearly not parallel
-
-* Go Scheduler Overview
-- a goroutine (G) is like a lightweight thread which we will examine shortly
-- in order for an M (operating system thread) to execute a G it must acquire a (logical) processor (P), also known as a context 
-
-.image images/scheduler-objects.jpg
-.link http://morsmachine.dk/go-scheduler
 
 * Concurrency: Go vs. Others
 concurrent programming is often difficult due to the subtleties required to correctly access shared data
@@ -179,25 +159,6 @@ we need to be able to time out if
 
 .play -edit src/waitingforgo2.go /START OMIT/,/END OMIT/
 
-* Mutual Exclusion (sync.Mutex)
-- what if we just want to make sure only one goroutine can access a variable at a time to avoid conflicts?
-- this concept is called mutual exclusion and the data structure that provides it is typically called a mutex
-- Go provides `sync.Mutex` and its two methods, `Lock` and `Unlock`
-- if a `sync.Mutex` object is already locked when a goroutine tried to lock it, the goroutine will block until the holder of the lock unlocks it
-
- import "sync"
- var state = make(map[int]int) // For our example the `state` will be a map
- var mutex = &sync.Mutex{}     // This `mutex` will synchronize access to `state`
- var readOps uint64            // We'll keep track of how many read...
- var writeOps uint64           // ...and write operations we do
-
-* Mutual Exclusion (cont'd)
-
-.code src/mutex.go
-
-* Mutual Exclusion (cont'd)
-
-.play -edit src/mutex2.go /START OMIT/,/END OMIT/
 
 * Documentation
 
