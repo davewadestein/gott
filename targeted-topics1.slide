@@ -308,7 +308,6 @@ single line initialization
 .link https://golang.org/pkg/strconv strconv package
 
 - most common conversions are `strconv.Atoi()` (ASCII to integer) and `strconv.Itoa()` (vice versa)
-- you may not use this package that often as `fmt` (which we'll see in a moment), but it's good to have in your back pocket as there are some super useful functions there
 
 * Outputting
 
@@ -500,7 +499,7 @@ Write a function `doubler` which takes an integer argument and doubles it
 
 .play src/funcasarg.go
 
-* User Inputs
+* Getting Input from the User
 
 * Command-Line Args
 
