@@ -2,20 +2,19 @@ package main
 
 import "fmt"
 
-type ByteSize float64
-  
 const (
-    _           = iota // ignore first value by assigning to blank identifier
-    KB ByteSize = 1 << (10 * iota)
-    MB
-    GB
-    TB
-    PB
-    EB
-    ZB
-    YB
+	Active, Running  = iota, iota + 100 // 0, 100
+	Passive, Stopped                    // 1, 101
+
+	// Reset // won't work because two expressions per line are needed
+
+	// But, you can reset the last expression
+	_ = iota
+	Reset
+
+	AnyOther = 10 // You can use any other expression even without iota
 )
 
 func main() {
-    fmt.Printf("%d %d %d %d\n", int(KB), int(MB), int(GB), int(TB))
+	fmt.Println(Active, Running, Passive, Stopped, Reset, AnyOther)
 }

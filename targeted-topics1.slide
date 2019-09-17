@@ -7,15 +7,15 @@ DevelopIntelligence
 dws@developintelligence.com
 http://www.developintelligence.com
 
-* Overview
-
-* Objective
+* Introduction
 
 - Who are you?
 - What is your job title?
 - What do you do here?
 - What's your programming background?
 - Who am I?
+
+* Overview
 
 * History
 - Developed at Google (2009)
@@ -176,14 +176,14 @@ many editors have Golang plugins
 
 *bool* true or false
 *string* immutable
-*uint* either 32 or 64 bits
-*int* same size as uint
-*uintptr* an unsigned int large enough to store the uninterpreted bits of a pointer value
-*uint8* the set of all unsigned  8-bit integers (0 to 255)
+*int* either 32 or 64 bits
+*uint* same size as int
+*int8/int16/32/64* the set of all signed 8-/16-/32-/64-bit integers 
+*uint8* the set of all unsigned 8-bit integers (0 to 255)
 *uint16* the set of all unsigned 16-bit integers (0 to 65535)
 *uint32* the set of all unsigned 32-bit integers (0 to 4294967295)
 *uint64* the set of all unsigned 64-bit integers (0 to 18446744073709551615)
-*int8/int16/32/64* the set of all signed 8-/16-/32-/64-bit integers 
+*uintptr* an unsigned int large enough to store the uninterpreted bits of a pointer value
 *float32/64* the set of all IEEE-754 32-/64-bit floating-point numbers
 *complex64/128* set of all complex numbers with float32/64 real and imaginary parts
 *byte* alias for uint8
@@ -218,7 +218,7 @@ all variables initialized to zero unless specified
 
  var (
  	name      string = "Ranveer Singh"
- 	age       int    = 33
+ 	age       int    = 34
  	almaMater string = "Indiana University"
  )
 
@@ -226,14 +226,14 @@ types are inferred if initializers are present
 
  var (
  	name      = "Ranveer Singh"
- 	age       =  33
+ 	age       =  34
  	almaMater = "Indiana University"
  )
 
 single line initialization
 
  var (
- 	name, almaMater, age = "Ranveer Singh", "Indiana University", 33
+ 	name, almaMater, age = "Ranveer Singh", "Indiana University", 34
  )
 
 * Declaration + Initialization Shorthand
@@ -265,7 +265,7 @@ single line initialization
 
 * Constants (cont'd)
 
-- `iota` is a predeclared identifier that represents successive untyped integer constants
+- `iota` is a predeclared identifier that represents successive integer constants
 
 .play src/constants.go /START OMIT/,/END OMIT/
 
@@ -273,22 +273,7 @@ single line initialization
 
 - `iota` can be used in expressions so you can do things like this
 
- type ByteSize float64
-   
- const (
- 	_           = iota // ignore first value by assigning to blank identifier
- 	KB ByteSize = 1 << (10 * iota)
- 	MB
- 	GB
- 	TB
- 	PB
- 	EB
- 	ZB
- 	YB
- )
-
-- << is the left shift operator
-- 1 << 10 = 0b1000000000 = 2^10 = 1024
+.play -edit src/gobert.go
 
 * Type Conversion/Casting
 
@@ -352,9 +337,9 @@ later on, we will see:
 
 - Go was designed to encourage good software engineering practices and an important part of high quality software is code reuse
 
-- every Go program is made up of packages, which are file(s) containing functions, variables, constants, etc., but no main
+- every Go program is made up of packages, which are file(s) containing functions, variables, constants, etc., but no main function
 
-- every Go program file has to be associated with a package via the `package` command at the top
+- every Go source file has to be associated with a package via the `package` command at the top
 
 - programs start running in package `main`
 
