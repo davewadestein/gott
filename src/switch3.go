@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"strconv"
 )
 
+var num int = 451
+
 func main() {
-    // time in playground is a constant, so this really
-    // should be run on your machine...
-    switch time.Now().Weekday() {
-    case time.Saturday, time.Sunday:
-        fmt.Println("It's the weekend")
-    default:
-        fmt.Println("It's a weekday")
-    }
+	switch strconv.Itoa(num) {
+	case "451", "452":
+		fmt.Println("Worked!")
+	default:
+		fmt.Println("Failed!")
+	}
 }

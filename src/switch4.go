@@ -3,22 +3,22 @@ package main
 // START OMIT
 import (
 	"fmt"
-	"time"
 	"math/rand"
+	"time"
 )
 
 func main() {
-    // get current time, extract seconds (and discard hours and minutes)
-    _, _, sec := time.Now().Clock() 
-    // use seconds to seed the random number generator
-    rand.Seed(int64(sec))
-    r := rand.Int()
+	_, _, sec := time.Now().Clock() // get time, extract seconds, discard hours and minutes
+	rand.Seed(int64(sec))           // use seconds to seed random number generator
+	r := rand.Int()
+	fmt.Printf("Random number (%d) is ", r)
 
-    switch { // HL
-    case r % 2 == 0:
-        fmt.Println("Random number is odd")
-    default:
-        fmt.Println("Random number is even")
-    } // HL
+	switch { // HL
+	case r%2 == 0:
+		fmt.Println("even")
+	default:
+		fmt.Println("odd")
+	} // HL
 }
+
 // END OMIT
