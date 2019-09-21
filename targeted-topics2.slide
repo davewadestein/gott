@@ -161,6 +161,8 @@ implement a square root function using Newton's method:
 * Slices: append() / copy()
 - `append()` returns a new slice containing appended items
 - slices can also be `copy()`-ed
+- for slice tricks including ways to copy without using `copy()`, see
+.link https://github.com/golang/go/wiki/SliceTricks
 
 .play -edit src/slice2.go /START OMIT/,/END OMIT/
 
